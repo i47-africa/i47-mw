@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#060A18">
+<title>i47® – Native Language Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Davish';src:url('Davish.woff2') format('woff2'),url('Davish.ttf') format('truetype'),url('Davish.otf') format('opentype');font-display:swap}
+:root{--bg:#F1F4FB;--card:#fff;--ink:#0A1330;--mute:#55658F;--line:#D3DBEE;--blue:#0B3D91;--accent:#58cc02;--cyan:#0A8FBF;--gold:#B57A00;--art:.07;--hf:'Davish','Outfit',system-ui,sans-serif;--bf:'Davish','Outfit',system-ui,sans-serif;--mf:'Davish','Outfit',system-ui,sans-serif;--top:90px}
+:root[data-theme=dark]{--bg:#060A18;--card:#0D1530;--ink:#EAF0FF;--mute:#8C9CC6;--line:#1E2A55;--blue:#2E7BFF;--accent:#58cc02;--cyan:#3DD6F5;--gold:#FFC93C;--art:.12}
+html.hc{--bg:#000;--card:#000;--ink:#fff;--mute:#fff;--line:#fff;--blue:#5BB0FF;--accent:#2FA600;--cyan:#6FF;--gold:#FF0;--art:0}
+html.big{font-size:125%}
+html.font{--bf:'Atkinson Hyperlegible',Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font:600 1rem/1.4 var(--bf);padding-bottom:calc(76px + env(safe-area-inset-bottom));transition:background .25s}
+body::before{content:"";position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 50% -10%,color-mix(in srgb,var(--blue) 28%,transparent),transparent 60%);pointer-events:none}
+#art{position:fixed;inset:0;z-index:0;color:var(--cyan);opacity:var(--art);pointer-events:none}
+#topwrap{position:sticky;top:0;z-index:6;background:var(--bg);padding-top:env(safe-area-inset-top)}
+.tick{background:var(--accent);color:#fff;font:700 .72rem var(--mf);overflow:hidden;white-space:nowrap;height:26px;line-height:26px}
+.tick span{display:inline-block;padding-left:100%;animation:mq 38s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+html.calm .tick span{animation:none;padding:0 12px}
+.hd{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:2px solid var(--line)}
+.logo{font:800 2rem/1 var(--hf);cursor:pointer;display:flex;align-items:center;gap:6px}
+.logo b{background:var(--accent);color:#fff;padding:0 8px 0 6px;transform:skewX(-12deg);display:inline-block}
+.logo b i{display:inline-block;transform:skewX(12deg);font-style:italic}
+.sp{flex:1}
+.pill{white-space:nowrap;font:700 .8rem var(--mf);border:1.5px solid var(--line);padding:5px 9px;background:var(--card)}
+.wrap{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 16px}
+h1,h2{font:800 2rem/1.05 var(--hf);text-transform:uppercase;letter-spacing:.5px}
+h1{margin:22px 0 4px}
+.sub{color:var(--mute);margin-bottom:16px}
+.k{font:700 .7rem var(--mf);color:var(--cyan);letter-spacing:1px;text-transform:uppercase}
+button{font-family:inherit;color:inherit}
+.btn{font:800 1.05rem var(--hf);text-transform:uppercase;letter-spacing:.8px;background:var(--accent);color:#fff;border:0;padding:12px 20px;cursor:pointer;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+.btn.o{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.ib{width:46px;height:46px;border:2px solid var(--line);background:var(--card);cursor:pointer;font-size:1.15rem;display:grid;place-items:center}
+.ib.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.ib.on.fav{background:var(--gold);border-color:var(--gold);color:#000}
+.ib.on.dn{background:var(--cyan);border-color:var(--cyan);color:#000}
+:is(button,input):focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.card{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:1.5px solid var(--line);border-left:6px solid var(--accent);padding:16px;margin-bottom:12px;cursor:pointer;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%);transition:transform .12s}
+.card:hover{transform:translateX(3px)}
+.badge{width:56px;height:56px;background:color-mix(in srgb,var(--blue) 22%,transparent);display:grid;place-items:center;font-size:1.8rem;flex:none}
+.card .t{flex:1;min-width:0}
+.n{font:800 1.5rem/1.1 var(--hf);text-transform:uppercase}
+.d{color:var(--mute);font-size:.88rem}
+.bar{height:8px;background:var(--line);margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--gold));transition:width .4s}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid .card{flex-direction:column;text-align:center;margin:0}
+.word{background:var(--card);border:1.5px solid var(--line);padding:14px;margin-bottom:12px;display:flex;gap:12px;align-items:center}
+.word.done{border-color:var(--cyan)}
+.word .t{flex:1;min-width:0}
+.w{font:800 1.7rem/1.1 var(--hf);overflow-wrap:anywhere}
+.r{color:var(--mute);margin-top:3px;overflow-wrap:anywhere}
+.r b{font:700 .65rem var(--mf);text-transform:uppercase;margin-right:6px;color:var(--cyan)}
+.side{display:flex;flex-direction:column;gap:6px}
+.ph{border:2px dashed var(--line);padding:22px;color:var(--mute);text-align:center;line-height:1.5;margin-top:12px}
+.sk{height:80px;background:linear-gradient(90deg,var(--card),var(--line),var(--card));background-size:200% 100%;animation:sk 1.2s infinite;margin-bottom:12px}
+@keyframes sk{to{background-position:-200% 0}}
+.lb{position:sticky;top:var(--top);z-index:4;background:var(--bg);padding:8px 0}
+.win{background:var(--blue);color:#fff;padding:16px;text-align:center;margin-bottom:12px}
+.win h2{color:#fff}
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:7;background:var(--card);border-top:2px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom)}
+.nav button{flex:1;background:none;border:0;padding:9px 0 8px;font:700 .65rem var(--mf);text-transform:uppercase;color:var(--mute);cursor:pointer;border-top:3px solid transparent;margin-top:-2px}
+.nav button span{display:block;font-size:1.3rem}
+.nav button.on{color:var(--ink);border-top-color:var(--accent)}
+.row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.row .t{flex:1}
+.sw{width:54px;height:30px;border-radius:99px;border:2px solid var(--line);background:var(--card);position:relative;cursor:pointer;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--mute);transition:left .15s}
+.sw[aria-checked=true]{background:var(--blue);border-color:var(--blue)}
+.sw[aria-checked=true]::after{left:27px;background:#fff}
+#q{width:100%;height:50px;border:2px solid var(--line);background:var(--card);color:var(--ink);padding:0 14px;font:600 1rem var(--bf);margin-bottom:14px}
+.sheet{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center}
+.sheet>div{background:var(--card);padding:26px 22px calc(26px + env(safe-area-inset-bottom));width:100%;max-width:640px;text-align:center;border-top:4px solid var(--accent)}
+.sheet p{color:var(--mute);margin:8px 0 16px}
+.foot{text-align:center;color:var(--mute);margin:26px 0 10px;font-weight:500}
+html.calm *{animation:none!important;transition:none!important}
+</style>
+</head>
+<body>
+<svg id="art" width="100%" height="100%" aria-hidden="true"><defs><pattern id="p" width="260" height="260" patternUnits="userSpaceOnUse"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M10 70 L40 25 L60 50 L80 20 L115 70 Z"/><path d="M150 20 L215 20 L215 55 Q215 85 182 100 Q150 85 150 55 Z"/><path d="M182 30 V90 M158 52 H206"/><path d="M20 160 L100 130 M100 130 L88 126 M100 130 L92 142"/><path d="M150 230 L235 200 M235 200 L223 197 M235 200 L227 211"/><path d="M20 235 L50 195 L72 225 L95 185 L125 235 Z"/><circle cx="215" cy="150" r="3"/><circle cx="130" cy="95" r="2"/></g></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>
+
+<div id="topwrap">
+  <div class="tick" aria-hidden="true"><span id="tk"></span></div>
+  <div class="hd">
+    <button class="ib" id="back" aria-label="Back" hidden>←</button>
+    <div class="logo" id="logo" role="button" tabindex="0" aria-label="Home"><b><i>i47</i></b><small style="font-size:.8rem;font-style:normal;color:var(--mute)">®</small></div>
+    <div class="sp"></div>
+    <div class="pill" id="st" aria-label="Streak"></div>
+    <div class="pill" id="pt" aria-label="Points"></div>
+    <button class="ib" id="theme" aria-label="Switch light or dark mode">🌙</button>
+  </div>
+</div>
+<div class="wrap"><main id="main"></main><div class="foot">“Language is identity. Preserving it preserves people.”</div></div>
+<nav class="nav" aria-label="Main"><button data-t="home"><span>🏠</span>Home</button><button data-t="search"><span>🔍</span>Search</button><button data-t="saved"><span>★</span>Saved</button><button data-t="settings"><span>⚙️</span>Settings</button></nav>
+
+<script>
+/* ===== YOUR SHEET LINKS. To add a language or category, add it here. ===== */
+const SOM="https://docs.google.com/spreadsheets/d/e/2PACX-1vRu_xYssnNbl4I8gy-gNrQTAoePETQZC_BFluw5w_dCsuFmjIhXNCJbcMcIxoXjeY309Y_Ytu73-3Jt/pubhtml?single=true&gid=";
+const LUO="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLSv4lRLy4tJiw-vQugkxZSeEmFHI_kEzMAMQ3PFMw5gWQbYXK-py_W09ib2HehBD5KRtGZfDpuwER/pubhtml?single=true&gid=";
+const LANGS={
+ somali:{name:"Somali",icon:"🦁",sheets:{alphabet:SOM+"1640331858",numbers:SOM+"1405329022",family:SOM+"1170462479",animals:SOM+"937722853",greetings:SOM+"600277276"}},
+ luo:{name:"Luo",icon:"🛶",sheets:{alphabet:LUO+"1877640834",numbers:LUO+"428167960",family:LUO+"0",animals:LUO+"1759412927",greetings:LUO+"128128877"}}
+};
+const CATS=[{id:"alphabet",icon:"🔤",name:"Alphabet"},{id:"numbers",icon:"🔢",name:"Numbers"},{id:"family",icon:"👨‍👩‍👧",name:"Family"},{id:"animals",icon:"🐄",name:"Animals"},{id:"greetings",icon:"👋",name:"Greetings"}];
+/* ======================================================================== */
+const $=s=>document.querySelector(s), main=$("#main"), back=$("#back"), D=document.documentElement;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const sync=()=>D.style.setProperty("--top",$("#topwrap").offsetHeight+"px");
+
+/* settings + theme */
+const SET=Object.assign({big:0,hc:0,font:0,calm:0},store.get("i47set")||{});
+function applySet(){["big","hc","font","calm"].forEach(k=>D.classList.toggle(k,!!SET[k]));store.set("i47set",SET);sync()}
+function setTheme(t){D.dataset.theme=t;$("#theme").textContent=t==="dark"?"☀️":"🌙";store.set("i47theme",t)}
+setTheme(store.get("i47theme")||"dark");applySet();
+$("#theme").onclick=()=>setTheme(D.dataset.theme==="dark"?"light":"dark");
+
+/* streak + points */
+const dstr=o=>new Date(Date.now()-o*864e5).toISOString().slice(0,10);
+const pts=()=>store.get("i47pts")||0;
+const streak=()=>{const s=store.get("i47streak");return s&&(s.last===dstr(0)||s.last===dstr(1))?s.n:0};
+const learned=()=>Object.keys(LANGS).reduce((a,l)=>a+CATS.reduce((b,c)=>b+prog(l,c.id).done.length,0),0);
+function bump(){const s=store.get("i47streak")||{last:"",n:0};if(s.last!==dstr(0)){s.n=s.last===dstr(1)?s.n+1:1;s.last=dstr(0);store.set("i47streak",s)}stats()}
+function addPts(n){store.set("i47pts",Math.max(0,pts()+n));stats()}
+function stats(){$("#st").textContent="🔥 "+streak();$("#pt").textContent="⭐ "+pts();
+ const m=`LIVE ▸ MISSION CONTROL ▸ ${streak()}-DAY STREAK ▸ ${pts()} POINTS ▸ ${learned()} WORDS LEARNED ▸ LANGUAGE IS IDENTITY ▸ `;$("#tk").textContent=m+m;sync()}
+
+/* navigation */
+let nav=[],cur=null,tab="home";
+function show(fn,push=true){if(push&&cur)nav.push(cur);cur=fn;back.hidden=!nav.length;fn();scrollTo(0,0)}
+back.onclick=()=>{const p=nav.pop();if(p){cur=p;back.hidden=!nav.length;p();scrollTo(0,0)}};
+function setTab(t){tab=t;nav=[];cur=null;document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));show({home,search,saved,settings}[t],false)}
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>setTab(b.dataset.t));
+$("#logo").onclick=()=>setTab("home");
+
+/* sheet data (with offline copy) */
+const URLRE=/(https?:\/\/[^\s"<>]+|(?:www\.|drive\.google\.com|docs\.google\.com|dropbox\.com|youtu\.be|soundcloud\.com)[^\s"<>]*)/i;
+function parseCSV(t){const rows=[];let r=[],c="",q=false;for(let i=0;i<t.length;i++){const ch=t[i];
+ if(q){if(ch=='"'){if(t[i+1]=='"'){c+='"';i++}else q=false}else c+=ch}
+ else if(ch=='"')q=true;else if(ch==','){r.push(c);c=""}
+ else if(ch=='\n'||ch=='\r'){if(ch=='\r'&&t[i+1]=='\n')i++;r.push(c);rows.push(r);r=[];c=""}else c+=ch}
+ if(c||r.length){r.push(c);rows.push(r)}return rows}
+function toItems(rows){
+ rows=rows.map(r=>r.map(c=>c.trim())).filter(r=>r.some(Boolean));if(!rows.length)return[];
+ const hasUrl=r=>r&&r.some(c=>URLRE.test(c));
+ const hdr=!hasUrl(rows[0])&&(hasUrl(rows[1])||/word|english|meaning|audio|translation|luo|somali|letter|number|name|category|sound/i.test(rows[0].join(" ")));
+ const H=hdr?rows[0]:[],body=hdr?rows.slice(1):rows;
+ return body.map(r=>{let audio="";const f=[];
+  r.forEach((c,i)=>{if(!c)return;const m=c.match(URLRE);
+   if(m){if(!audio)audio=/^https?:/i.test(m[0])?m[0]:"https://"+m[0];
+    const rest=c.replace(m[0],"").trim();if(rest&&!/^(audio|listen|play|sound|link)?[\s:\-–]*$/i.test(rest))f.push({h:H[i]||"",v:rest})}
+   else f.push({h:H[i]||"",v:c})});
+  return f.length?{title:f[0].v,rest:f.slice(1),audio}:null}).filter(Boolean)}
+const mem={},fromCache={};
+async function getItems(url){
+ if(mem[url])return mem[url];
+ try{const res=await fetch(url.replace("/pubhtml","/pub")+"&output=csv");if(!res.ok)throw 0;
+  const it=toItems(parseCSV(await res.text()));store.set("i47c:"+url,it);fromCache[url]=0;return mem[url]=it}
+ catch(e){const c=store.get("i47c:"+url);if(c){fromCache[url]=1;return mem[url]=c}throw e}
+}
+function audioUrl(v){
+ let m=v.match(/drive\.google\.com\/file\/d\/([^\/?]+)/)||v.match(/drive\.google\.com\/.*[?&]id=([^&]+)/);
+ if(m)return "https://drive.google.com/uc?export=download&id="+m[1];
+ if(/dropbox\.com/.test(v))return v.replace("www.dropbox.com","dl.dropboxusercontent.com").replace(/[?&]dl=0/,"");
+ return v}
+let player=null,pb=null;
+function play(btn,url){
+ if(player){player.pause();pb&&pb.classList.remove("on")}
+ player=new Audio(audioUrl(url));pb=btn;btn.classList.add("on");bump();
+ player.onended=()=>btn.classList.remove("on");
+ player.play().catch(()=>{btn.classList.remove("on");btn.textContent="⚠️";setTimeout(()=>btn.textContent="🔊",1500);window.open(url,"_blank","noopener")})}
+
+/* progress + favourites */
+const key=(l,c)=>"i47:"+l+":"+c, prog=(l,c)=>store.get(key(l,c))||{done:[],total:0};
+const favs=()=>store.get("i47fav")||[], fk=(l,c,t)=>l+"|"+c+"|"+t;
+const isFav=(l,c,t)=>favs().some(f=>f.k===fk(l,c,t));
+function toggleFav(l,c,it){let f=favs();const k=fk(l,c,it.title);const i=f.findIndex(x=>x.k===k);if(i<0)f.push({k,l,c,it});else f.splice(i,1);store.set("i47fav",f);return i<0}
+
+/* word card */
+function wordEl(it,l,c,o={}){
+ const el=document.createElement("div"),p=o.p;el.className="word"+(p&&p.done.includes(it.title)?" done":"");
+ el.innerHTML=`<div class="t">${o.tag?`<div class="k">${esc(LANGS[l].name)} · ${esc(CATS.find(x=>x.id===c).name)}</div>`:""}<div class="w">${esc(it.title)}</div>${it.rest.map(r=>`<div class="r">${r.h?`<b>${esc(r.h)}</b>`:""}${esc(r.v)}</div>`).join("")}</div>
+ <div class="side"><button class="ib play" aria-label="Play audio" ${it.audio?"":"disabled style='opacity:.3'"}>🔊</button><button class="ib fav ${isFav(l,c,it.title)?"on":""}" aria-label="Save word">★</button>${p?`<button class="ib dn ${p.done.includes(it.title)?"on":""}" aria-label="Mark as learned">✓</button>`:""}</div>`;
+ el.querySelector(".play").onclick=e=>it.audio&&play(e.currentTarget,it.audio);
+ el.querySelector(".fav").onclick=e=>{const on=toggleFav(l,c,it);e.currentTarget.classList.toggle("on",on);if(o.onFav)o.onFav()};
+ const d=el.querySelector(".dn");
+ if(d)d.onclick=e=>{const k=p.done.indexOf(it.title),add=k<0;if(add){p.done.push(it.title);addPts(10);bump()}else{p.done.splice(k,1);addPts(-10)}
+  el.classList.toggle("done",add);e.currentTarget.classList.toggle("on",add);o.upd()};
+ return el}
+
+/* screens */
+function home(){
+ main.innerHTML=`<div class="k" style="margin-top:20px">Mission control</div><h1 style="margin-top:4px">Choose your language</h1><p class="sub">Learn your native language, one word at a time.</p>`+
+ Object.entries(LANGS).map(([id,L])=>{const n=CATS.reduce((a,c)=>a+prog(id,c.id).done.length,0);
+  return `<button class="card" data-l="${id}"><div class="badge">${L.icon}</div><div class="t"><div class="n">${L.name}</div><div class="d">${n?n+" words learned":"Start mission"}</div></div><span>›</span></button>`}).join("");
+ main.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>show(()=>lang(b.dataset.l)))}
+function lang(id){
+ const L=LANGS[id];
+ main.innerHTML=`<div class="k" style="margin-top:20px">Select mission</div><h1 style="margin-top:4px">${L.icon} ${L.name}</h1><p class="sub">Pick a lesson.</p><div class="grid">`+
+ CATS.filter(c=>L.sheets[c.id]).map(c=>{const p=prog(id,c.id),pc=p.total?Math.round(p.done.length/p.total*100):0;
+  return `<button class="card" data-c="${c.id}"><div class="badge">${pc===100?"✅":c.icon}</div><div class="n">${c.name}</div><div class="bar" style="width:100%"><i style="width:${pc}%"></i></div><div class="d">${p.total?p.done.length+" / "+p.total:"New"}</div></button>`}).join("")+
+ `</div><div style="height:16px"></div>`+[["📘","Dictionary","Full word search, meanings, examples and native audio."],["🔊","Text-to-Speech","Type or paste text and hear native pronunciation."]].map(([i,t,d])=>`<button class="card lk" data-t="${t}" data-d="${d}" style="border-left-color:var(--line)"><div class="badge">${i}</div><div class="t"><div class="n">${t} 🔒</div><div class="d">Premium · coming soon</div></div></button>`).join("");
+ main.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>show(()=>lesson(id,b.dataset.c)));
+ main.querySelectorAll(".lk").forEach(b=>b.onclick=()=>{const s=document.createElement("div");s.className="sheet";
+  s.innerHTML=`<div><div style="font-size:2.6rem">🔒</div><h2>${b.dataset.t}</h2><p>Premium feature · coming soon.<br>${b.dataset.d}</p><button class="btn">Got it</button></div>`;
+  s.onclick=e=>{if(e.target===s||e.target.tagName==="BUTTON")s.remove()};document.body.appendChild(s)})}
+async function lesson(l,c){
+ const cat=CATS.find(x=>x.id===c),url=LANGS[l].sheets[c],head=`<div class="k" style="margin-top:20px">${LANGS[l].name}</div><h1 style="margin-top:4px">${cat.icon} ${cat.name}</h1>`;
+ main.innerHTML=head+`<div class="sk"></div><div class="sk"></div><div class="sk"></div>`;
+ let items;try{items=await getItems(url)}catch(e){main.innerHTML=head+`<div class="ph">Couldn't load this lesson. Check your internet and that the sheet is still published to the web.<br><br><a class="btn" style="text-decoration:none;display:inline-block" href="${url}" target="_blank" rel="noopener">Open original sheet</a></div>`;return}
+ if(!items.length){main.innerHTML=head+`<div class="ph">No words here yet.</div>`;return}
+ const p=prog(l,c);p.total=items.length;
+ main.innerHTML=head+`<p class="sub">${fromCache[url]?"📡 Offline · showing your saved copy. ":""}Tap 🔊 to listen, ★ to save, ✓ when you know it.</p><div class="lb"><div class="bar" style="margin:0"><i id="pb"></i></div><div class="d" id="pl" style="margin-top:4px"></div></div><div id="win"></div><div id="list" style="margin-top:8px"></div>`;
+ const upd=()=>{$("#pb").style.width=Math.round(p.done.length/items.length*100)+"%";$("#pl").textContent=p.done.length+" of "+items.length+" learned";
+  const all=p.done.length===items.length;if(all&&!p.bonus){p.bonus=1;addPts(50)}
+  $("#win").innerHTML=all?`<div class="win"><div style="font-size:2.4rem">🚀</div><h2>Mission complete!</h2><div class="k" style="color:#fff">+50 bonus points</div></div>`:"";store.set(key(l,c),p);stats()};
+ items.forEach(it=>$("#list").appendChild(wordEl(it,l,c,{p,upd})));upd()}
+async function search(){
+ main.innerHTML=`<h1>Search</h1><p class="sub">Find any word across all languages and lessons.</p><input id="q" type="search" placeholder="Type a word or meaning" aria-label="Search" autocomplete="off"><div id="res"><div class="sk"></div><div class="sk"></div></div>`;
+ const all=[];await Promise.allSettled(Object.entries(LANGS).flatMap(([l,L])=>Object.entries(L.sheets).map(async([c,u])=>{(await getItems(u)).forEach(it=>all.push({l,c,it}))})));
+ const draw=q=>{q=q.trim().toLowerCase();const R=$("#res");R.innerHTML="";
+  if(!q){R.innerHTML=`<div class="ph">${all.length?all.length+" words ready to search.":"No lessons could be loaded."}</div>`;return}
+  const f=all.filter(x=>(x.it.title+" "+x.it.rest.map(r=>r.v).join(" ")).toLowerCase().includes(q)).slice(0,40);
+  if(!f.length)R.innerHTML=`<div class="ph">No words found.</div>`;f.forEach(x=>R.appendChild(wordEl(x.it,x.l,x.c,{tag:1})))};
+ draw("");$("#q").oninput=e=>draw(e.target.value)}
+function saved(){
+ const f=favs();main.innerHTML=`<h1>Saved words</h1><p class="sub">Your starred words, ready to review.</p><div id="res"></div>`;
+ if(!f.length){$("#res").innerHTML=`<div class="ph">Nothing saved yet.<br>Tap ★ on any word to keep it here.</div>`;return}
+ f.forEach(x=>$("#res").appendChild(wordEl(x.it,x.l,x.c,{tag:1,onFav:()=>setTimeout(saved,150)})))}
+function settings(){
+ const rows=[["big","Larger text","Bigger words and buttons"],["hc","High contrast","Stronger colours for easier reading"],["font","Easy-read font","A clearer, more readable typeface"],["calm","Reduce motion","Stops the scrolling ticker and animations"]];
+ main.innerHTML=`<h1>Settings</h1><p class="sub">Make i47 comfortable for you.</p><div class="k">Accessibility</div>`+rows.map(([k,t,d])=>`<div class="row"><div class="t"><div style="font-weight:700">${t}</div><div class="d">${d}</div></div><button class="sw" role="switch" aria-label="${t}" data-k="${k}" aria-checked="${!!SET[k]}"></button></div>`).join("")+
+ `<div class="k" style="margin-top:22px">Offline</div><div class="row"><div class="t"><div style="font-weight:700">Save all lessons for offline</div><div class="d" id="os">${navigator.onLine?"Online":"Offline now"} · words only, audio needs internet</div></div><button class="btn" id="off">Save</button></div>
+ <div class="k" style="margin-top:22px">Progress</div><div class="row"><div class="t"><div style="font-weight:700">${learned()} words learned · ${pts()} points</div><div class="d">Saved on this device only</div></div><button class="btn o" id="rs">Reset</button></div>`;
+ main.querySelectorAll(".sw").forEach(b=>b.onclick=()=>{const k=b.dataset.k;SET[k]=SET[k]?0:1;b.setAttribute("aria-checked",!!SET[k]);applySet()});
+ $("#off").onclick=async()=>{$("#os").textContent="Saving…";let ok=0,n=0;
+  await Promise.allSettled(Object.values(LANGS).flatMap(L=>Object.values(L.sheets).map(async u=>{n++;try{delete mem[u];await getItems(u);if(!fromCache[u])ok++}catch(e){}})));
+  $("#os").textContent=ok+" of "+n+" lessons saved for offline"};
+ $("#rs").onclick=()=>{if(confirm("Reset all points, streak, progress and saved words?")){Object.keys(localStorage).filter(k=>k.startsWith("i47:")||/^i47(pts|streak|fav)$/.test(k)).forEach(k=>localStorage.removeItem(k));stats();settings()}}}
+
+stats();setTab("home");addEventListener("resize",sync);
+if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+</script>
+</body>
+</html>
